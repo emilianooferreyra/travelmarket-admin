@@ -3,9 +3,11 @@
 const mongoose = require("mongoose");
 const config = require("./config.js");
 
+require("dotenv").config();
+
 try {
   mongoose.connect(
-    "mongodb://admin:ObiWan2022@database-shard-00-00.6suuw.mongodb.net:27017,database-shard-00-01.6suuw.mongodb.net:27017,database-shard-00-02.6suuw.mongodb.net:27017/travelmarket?ssl=true&replicaSet=atlas-7qr6aa-shard-0&authSource=admin&retryWrites=true&w=majority",
+    process.env.MONGO_URI,
     { useMongoClient: true },
 
     function (err, res) {

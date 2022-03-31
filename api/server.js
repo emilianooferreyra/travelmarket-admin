@@ -7,9 +7,9 @@ const router = require("./routes");
 const middleware = require("./middleware");
 const db = require("./db");
 
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 
-dotenv.config();
+// dotenv.config();
 
 app.use("/api/uploads", express.static("uploads"));
 
