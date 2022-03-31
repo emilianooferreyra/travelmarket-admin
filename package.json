@@ -6,9 +6,9 @@
   "dependencies": {
     "angular-paging": "^2.2.2",
     "bower": "^1.8.0",
+    "express": "^4.17.3",
     "ng-file-upload": "^12.2.12"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
