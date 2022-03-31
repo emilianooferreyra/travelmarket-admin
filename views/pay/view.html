@@ -1,0 +1,102 @@
+<div id="wrapper">
+    <div ng-include="'views/common/navigation.html'"></div>
+    <div id="page-wrapper" class="gray-bg">
+        <div ng-include="'views/common/topnavbar.html'"></div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            <h5>{{info.name}}</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <table style="width:70%;">
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Fecha</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.date | date: 'd/MM/yyyy'}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Forma de pago</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.payMethod | methodFilter}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Moneda</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.currency | currencyFilter }}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Importe</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.import }}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr ng-if="!!info.exchangeRate">
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Cotización del día</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.exchangeRate }}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr ng-if="!!info.exchangeRate">
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Importe con cotización</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.importWer }}
+                                        </h2>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <!-- TODO: sacar styles -->
+                            <div class="text-center" style="clear:both;">
+                                <a class="btn btn-primary" style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;"
+                                   ng-href="#/{{module}}/{{info._id}}/edit">Editar</a>
+                                <button class="btn btn-danger" ng-click="delete(info._id);"
+                                        style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;">
+                                    Eliminar
+                                </button>
+                                <a class="btn btn-default" style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;"
+                                   ng-href="#/sales/{{info.sale._id}}/view">Atrás</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-include="'views/common/footer.html'"></div>
+    </div>
+</div>

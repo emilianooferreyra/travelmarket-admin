@@ -1,0 +1,30 @@
+<div class="divSearch">
+    <form ng-submit="sb.search();">
+        <div class="row">
+          <div class="col-md-3" ng-if="!!filtersView.input" ng-repeat="searchField in filtersView.input">
+            <label>{{searchField.name}}</label>
+            <input ng-if="searchField.type == 'text'" type="text" ng-model="searchField.val" name="key" class="form-control" placeholder="{{searchField.name}}" ng-enter="sb.search()">
+            <input ng-if="searchField.type == 'number'" type="number" ng-model="searchField.val" name="key" class="form-control" placeholder="{{searchField.name}}" ng-enter="sb.search()" min="1" max="999999999999999999" step="1">
+            <input ng-if="searchField.type == 'date'" class="form-control" date-time format="YYYY-MM-DD" placeholder="{{searchField.name}}" ng-model="searchField.val" view="date" min-view="date">
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-3" ng-if="!!filtersView.dropdown && dropdown.associatedModel != 'medicalcenters'"ng-repeat="dropdown in filtersView.dropdown">
+            <label for="{{dropdown.associatedModel}}">{{dropdown.name}}</label>
+            <select placeholder="{{ dropdown.name }}" class="selectize-input selectize-width dropdowns-filter" data-key="{{dropdown.associatedKey}}" data-modelname="{{dropdown.associatedModel}}" select-static-ajax name="{{dropdown.associatedModel}}"
+                    id="{{dropdown.associatedModel}}" ng-model="dropdown.val" ng-show="sb.dropShow"></select>
+            <!-- <select placeholder="dropdown.name" data-key="{{dropdown.key}}" data-modelname="{{dropdown.associatedModel}}" name="{{drop.model}}" id="{{drop.model}}" ng-model="searchModel.filters[drop.modelInput]"
+                    required class="selectize-width" multiple="dropdown.multiple"></select> -->
+          </div>
+
+        <div class="row">
+          <div class="col-xs-1 col-xs-offset-10 searchButton">
+            <button class="btn btn-primary pull-right" type="submit">Buscar</button><!--ng-click="search()"-->
+          </div>
+          <div class="col-xs-1 searchButton">
+            <a class="btn btn-link pull-right" ng-click="sb.clearSearch();">Limpiar</a>
+          </div>
+        </div>
+    </form>
+</div>

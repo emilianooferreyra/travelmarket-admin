@@ -1,0 +1,188 @@
+<form class="form-horizontal text-center" ng-submit="save();">
+    <div style="width:90%;">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Imágen de Portada</label>
+
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div style="border: 1px solid #f1f1f1;
+                                    border-radius: 6px;
+                                    background-color: #f1f1f1;
+                                    font-weight: 600;
+                                    text-align: center;
+                                    padding: 0.5em;
+                                    cursor:pointer;"
+                        class="drop-box control-label" ngf-select ng-model="info.front"
+                        ngf-accept="'image/*'"
+                        ngf-pattern="'image/*'"
+                        >Seleccioná una imágen</div>
+                    </div>
+                    <div class="col-sm-9" style="padding: .5em;font-weight: 100;text-align: left;">
+                        <span>La imágen debe ser horizontal y con tamaño mayor a 360px x 240px.</span>
+                    </div>
+                </div>
+                <div class="row" ng-if='!!info.front' style="margin-top: 1em;">
+                    <div class="col-sm-6">
+                        <span class="pull-left" ng-click='clearFront();'><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+                        <img ng-if="!info.front.source" style="width: 100%;height: auto;" ngf-thumbnail="info.front || '/thumb.jpg'">
+                        <img ng-if="!!info.front.source" style="width: 100%;height: auto;" ng-src="api/{{info.front.source}}">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="city">Ciudad</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="info.city"
+                       id="city"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="country">País</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="info.country"
+                       id="country"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="beach">Playa</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="info.beach"
+                       id="beach"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="when">Fecha de partida*</label>
+            <div class="col-sm-10">
+                <input class="form-control" ng-model="info.when" placeholder="DD-MM-AAAA" required="true" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="days">Cantidad de días*</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="number" ng-model="info.days" min="0" max="365"
+                       id="days" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="nights">Cantidad de noches</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="number" ng-model="info.nights" min="0" max="365"
+                       id="nights"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="starred">Destacado</label>
+
+            <div class="col-sm-10">
+                <input class="form-control checkbox-button" type="checkbox" ng-model="info.starred"
+                       id="starred"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="aereal">Incluye aéreos</label>
+
+            <div class="col-sm-10">
+                <input class="form-control checkbox-button" type="checkbox" ng-model="info.aerial"
+                       id="aereal"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="aereal">Incluye traslado</label>
+
+            <div class="col-sm-10">
+                <input class="form-control checkbox-button" type="checkbox" ng-model="info.transfer"
+                       id="transfer"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="excursion">Incluye excursiones</label>
+
+            <div class="col-sm-10">
+                <input class="form-control checkbox-button" type="checkbox" ng-model="info.excursion"
+                       id="excursion"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="accommodation">Incluye hospedaje</label>
+
+            <div class="col-sm-10">
+                <input class="form-control checkbox-button" type="checkbox" ng-model="info.accommodation"
+                       id="accommodation"/>
+            </div>
+        </div>
+        <div class="form-group" ng-if="!!info.accommodation">
+            <label class="col-sm-2 control-label" for="hotelName">Nombre del Hotel</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="info.hotelName"
+                       id="hotelName"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="minorAge">Mínimo de edad</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="number" ng-model="info.minorsAge" min="0" max="30"
+                       id="minorAge"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="foodRegime">Tipo de comida*</label>
+
+            <div class="col-sm-10">
+                <select class="form-control" ng-model="info.foodRegime" id="foodRegime" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="breakfast">Desayuno</option>
+                    <option value="allinclusive">All inclusive</option>
+                    <option value="complete">Completo</option>
+                    <option value="european">Europeo</option>
+                    <option value="other">Otro</option>
+                    <option value="none">Ninguno</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="passengers">Cantidad de pasajeros</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="number" ng-model="info.passengers" min="0" max="30"
+                       id="passengers"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="currency">Moneda</label>
+
+            <div class="col-sm-10">
+                <select class="form-control" ng-model="info.currency" id="currency" ng-required="!!info.price">
+                    <option value="">Seleccione una opción</option>
+                    <option value="ars">Peso argentino</option>
+                    <option value="usd">Dólar</option>
+                    <option value="eur">Euro</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="price">Precio</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="number" ng-model="info.price" min="0" max="9999999999"
+                       id="price" ng-required="!!info.currency"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="description">Descripción</label>
+
+            <div class="col-sm-10">
+                <textarea class="form-control" id="description" ng-model="info.description"></textarea>
+            </div>
+        </div>
+        <div class="actions">
+            <a class="btn btn-default" ng-href="#/{{module}}">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+    </div>
+</form>

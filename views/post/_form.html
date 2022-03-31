@@ -1,0 +1,104 @@
+<form class="form-horizontal text-center" ng-submit="save();">
+    <div style="width:90%;">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">Título*</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="info.title"
+                       id="title" required=""/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="description">Descripción</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="info.description"
+                       id="description"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Imágen de Portada</label>
+
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div style="border: 1px solid #f1f1f1;
+                                    border-radius: 6px;
+                                    background-color: #f1f1f1;
+                                    font-weight: 600;
+                                    text-align: center;
+                                    padding: 0.5em;
+                                    cursor:pointer;"
+                        class="drop-box control-label" ngf-select ng-model="info.front"
+                        ngf-accept="'image/*'"
+                        ngf-pattern="'image/*'"
+                        >Seleccioná una imágen</div>
+                    </div>
+                    <div class="col-sm-9" style="padding: .5em;font-weight: 100;text-align: left;">
+                        <span>La imágen debe ser horizontal y con tamaño mayor a 360px x 240px.</span>
+                    </div>
+                </div>
+                <div class="row" ng-if='!!info.front' style="margin-top: 1em;">
+                    <div class="col-sm-6">
+                        <span class="pull-left" ng-click='clearFront();'><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+                        <img ng-if='!info.front.source' style="width: 100%;height: auto;" ngf-thumbnail="info.front || '/thumb.jpg'">
+                        <img ng-if="!!info.front.source" style="width: 100%;height: auto;" ng-src="{{(!!info.front.source) ? 'api/' + info.front.source : '/thumb.jpg'}}">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Imágenes Galería</label>
+
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div style="border: 1px solid #f1f1f1;
+                                    border-radius: 6px;
+                                    background-color: #f1f1f1;
+                                    font-weight: 600;
+                                    text-align: center;
+                                    padding: 0.5em;
+                                    cursor:pointer;"
+                        class="drop-box control-label" ngf-select ngf-drop ng-model="info.gallery"
+                        ngf-multiple="true"
+                        ngf-drag-over-class="'dragover'"
+                        ngf-accept="'image/*'"
+                        ngf-pattern="'image/*'"
+                        ngf-keep="true"
+                        ngf-max-files="5">Seleccioná imágenes</div>
+                    </div>
+                    <div class="col-sm-9" style="padding: .5em;font-weight: 100;text-align: left;">
+                        <span>Las imágenes deben ser horizontales y con tamaño mayor a 360px x 240px.</span>
+                    </div>
+                </div>
+                <div class="row" ng-if='!!info.gallery' style="margin-top: 1em;">
+                    <div class="col-sm-4" ng-repeat="image in info.gallery">
+                        <span class="pull-left" ng-click='clearImage($index);'><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+                        <img style="width: 100%;height: auto;margin: 15px;" ngf-thumbnail="image || '/thumb.jpg'">
+                    </div>
+                </div>
+                <div class="row" ng-if='!!info.images && info.images.length > 0' style="margin-top: 1em;">
+                    <div class="col-sm-4" ng-repeat="image in info.images">
+                        <span class="pull-left" ng-click='deleteImages($index, image._id);'><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+                        <img style="width: 100%;height: auto;margin: 15px;"  ng-src="{{(!!image.source) ? 'api/' + image.source : '/thumb.jpg'}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="body">Cuerpo</label>
+
+            <div class="col-sm-10">
+                <textarea id="body" ckeditor ng-model="info.body"></textarea>
+            </div>
+        </div>
+        <div class="actions">
+            <a class="btn btn-default" ng-href="#/{{module}}">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+    </div>
+</form>

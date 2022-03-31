@@ -1,0 +1,91 @@
+<form class="form-horizontal text-center" ng-submit="save();">
+    <div style="width:90%;">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="code">Código de venta</label>
+
+            <div class="col-sm-10">
+                {{info.sale.code}}
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="client">Cliente</label>
+
+          <div class="col-sm-10">
+            {{info.sale.client.name}} - {{info.sale.client.cuit}}
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="package">Paquete</label>
+
+            <div class="col-sm-10">
+              {{info.sale.package.city}} - {{info.sale.package.country}} - {{info.sale.package.beach}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="description">Descripción</label>
+            <div class="col-sm-10">
+                {{info.sale.description}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="date">Fecha del pago*</label>
+            <div class="col-sm-10">
+                <input class="form-control" ng-model="info.date" placeholder="DD-MM-AAAA" id="date">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="payMethod">Forma de pago*</label>
+            <div class="col-sm-10">
+              <select class="form-control" ng-model="info.payMethod" id="payMethod" required>
+                  <option value="">Seleccione una opción</option>
+                  <option value="Efectivo">Efectivo</option>
+                  <option value="Deposito">Depósito/Transferencia</option>
+                  <option value="Tarjeta">Tarjeta</option>
+                  <option value="Link">Link de pagos</option>
+                  <option value="Saldo">Pase de saldo / Monto a favor</option>
+                  <option value="TC">TC Línea Aérea</option>
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="currency">Moneda</label>
+
+            <div class="col-sm-10">
+                <select class="form-control" ng-model="info.currency" id="currency">
+                    <option value="">Seleccione una opción</option>
+                    <option value="ars">Peso argentino</option>
+                    <option value="usd">Dólar</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="importe">Importe*</label>
+
+          <div class="col-sm-10">
+            <input class="form-control" type="number" ng-model="info.importe"  min="0" max="99999999999" step=".01"
+            id="importe"/>
+          </div>
+        </div>
+        <div class="form-group" ng-if="!!info.sale.currency && info.sale.currency != info.currency">
+            <label class="col-sm-2 control-label" for="exchangeRate">Cotización del día</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="number" ng-model="info.exchangeRate" min="0" max="99999999999" step=".01"
+                       id="exchangeRate"/>
+            </div>
+        </div>
+        <div class="form-group" ng-if="!!info.exchangeRate">
+            <label class="col-sm-2 control-label" for="exchangeRate">Importe con conversión</label>
+
+            <div class="col-sm-10">
+                {{(info.currency == 'ars') ? info.importe / info.exchangeRate : info.importe * info.exchangeRate}}
+            </div>
+        </div>
+        <div class="actions">
+            <a class="btn btn-default" ng-href="#/{{module}}">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+    </div>
+</form>

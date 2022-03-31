@@ -1,0 +1,23 @@
+{
+  "name": "travelmarket-admin",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "arielleguizamon <ariel.leguizamon93@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ckeditor": "^4.4.0",
+    "ng-ckeditor": "^0.2.1",
+    "angular-spinner": "^1.0.1",
+    "angular-selectize2": "^3.0.1"
+  }
+}

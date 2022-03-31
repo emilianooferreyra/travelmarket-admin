@@ -1,0 +1,90 @@
+<div id="wrapper">
+    <div ng-include="'views/common/navigation.html'"></div>
+    <div id="page-wrapper" class="gray-bg">
+        <div ng-include="'views/common/topnavbar.html'"></div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            <h5>{{info.name}}</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <table style="width:70%;">
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Título</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.title}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Descripción</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.description}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Imágen de Portada</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <img style="width: 160px;margin-left: 1em;" ng-src="api/{{info.front.source}}" alt="{{info.title}}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Imágenes Galería</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <div ng-if="!!info.images && info.images.length > 0" style="margin-left: 1em;">
+                                            <img style="width: 160px; margin: .5em;" ng-src="api/{{image.source}}" alt="{{info.title}}" ng-repeat="image in info.images">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Cuerpo</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <div style="margin-left:1em;" ng-bind-html="getHtml(info.body);">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- TODO: sacar styles -->
+                            <div class="text-center" style="clear:both;">
+                                <a class="btn btn-primary" style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;"
+                                   ng-href="#/{{module}}/{{info._id}}/edit">Editar</a>
+                                <button class="btn btn-danger" ng-click="delete(info._id);"
+                                        style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;">
+                                    Eliminar
+                                </button>
+                                <a class="btn btn-default" style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;"
+                                   ng-href="#/{{module}}">Atrás</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-include="'views/common/footer.html'"></div>
+    </div>
+</div>

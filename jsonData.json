@@ -1,0 +1,26 @@
+{
+  "Proveedores": {
+    "key": "providers",
+    "attributes": [
+      "name", "cuit", "bank", "cbuPeso", "cbuDolar", "mail", "phone"
+    ]
+  },
+  "Ventas": {
+    "key": "sales",
+    "attributes": [
+      "code", "date", "client", "package", "description", "currency", "impNeto", "tx", "impTm", "profit", "benefit", "complete"
+    ]
+  },
+  "Pagos": {
+    "key": "pays",
+    "attributes": [
+      "date", "payMethod", "currency", "import", "exchangeRate", "sale", "impWer"
+    ]
+  },
+  "Pagos a proveedores": {
+    "key": "providerpayments",
+    "attributes": [
+      "sale", "provider", "complete", "deberia tener tipo el importe total YA abonado y el importe faltante"
+    ]
+  }
+}

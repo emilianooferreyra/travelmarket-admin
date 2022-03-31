@@ -1,0 +1,22 @@
+{
+  "name": "travelmarket-admin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "angular-paging": "^2.2.2",
+    "bower": "^1.8.0",
+    "ng-file-upload": "^12.2.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/diper/travelmarket-admin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/diper/travelmarket-admin#readme"
+}

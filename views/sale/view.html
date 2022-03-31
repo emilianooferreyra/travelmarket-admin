@@ -1,0 +1,265 @@
+<div id="wrapper">
+    <div ng-include="'views/common/navigation.html'"></div>
+    <div id="page-wrapper" class="gray-bg">
+        <div ng-include="'views/common/topnavbar.html'"></div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            <h5>{{info.name}}</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <table style="width:70%;">
+                                <tr>
+                                    <td style="width: 30%;">
+                                        <h2 class="text-right">
+                                            <strong><small>Código</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.code}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Fecha</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.date | date: 'd/MM/yyyy':'UTC'}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Cliente</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.client.name}} - {{info.client.cuit}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr ng-if="!!info.provider">
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Proveedor</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.provider.name}} - {{info.provider.cuit}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <!-- <tr ng-show="{{info.package.city}}">
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Paquete</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.package.city }} - {{ info.package.country }} - {{ info.package.beach }}
+                                        </h2>
+                                    </td>
+                                </tr> -->
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Categoría</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.category }}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Descripción</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.description }}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Moneda</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.currency | currencyFilter}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Importe Total</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.total.toFixed(2) }}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Restan</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.remain.toFixed(2) }}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Importe Neto</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.impNeto.toFixed(2) }}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>TX</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.tx.toFixed(2) }}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Importe TM</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.impTm.toFixed(2) }}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <h2 class="text-right">
+                                      <strong><small>Ganancia</small></strong>
+                                    </h2>
+                                  </td>
+                                  <td>
+                                    <h2 class="text-left" style="margin-left:1em;">{{ info.profit.toFixed(2) }}
+                                    </h2>
+                                  </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Beneficio</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.benefit.toFixed(2) }}%
+                                        </h2>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Notas</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <div class="text-left" ng-repeat="nota in info.notes" ng-if="!!nota.user" style="margin-left:1em;margin-bottom: 8px;padding:5px;background-color:#fbe8f6;border:1px solid #ccc;border-radius:4px;">
+                                          <label ng-click="deleteNote(nota);" class="pull-right" style="cursor:pointer;font-size:1.3em;padding-left:.4em;"><i class="fa fa-trash"></i></label>
+                                          <label ng-click="editNote(nota);" class="pull-right" style="cursor:pointer;font-size:1.3em;"><i class="fa fa-pencil"></i></label>
+                                          <p ng-bind-html="getHtml(nota.description)"></p>
+                                          <small style="font-style:italic;">Editado el {{nota.updatedAt | date: 'd/MM/yyyy'}}</small><br>
+                                          <small style="font-style:italic;">Creado el {{nota.createdAt | date: 'd/MM/yyyy'}}</small><br>
+                                          <small style="font-style:italic;">{{nota.user.name}}</small>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr ng-if="!!formNote">
+                                  <td></td>
+                                  <td>
+                                    <form id="formNote" ng-submit="addNote();">
+                                      <textarea ckeditor="configCkeditor" ng-model="note.description"></textarea><br><br>
+                                      <div style="margin-left:1em;" class="pull-right">
+                                        <label class="btn btn-default" ng-click="descartarNota();">Descartar nota</label>
+                                        <button type="submit" class="btn btn-primary">Guardar nota</button>
+                                      </div>
+                                    </form>
+                                  </td>
+                                </tr>
+                            </table>
+                            <table class="table table-bordered table-hover dataTable" id='clients-table'>
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Moneda</th>
+                                        <th>Importe</th>
+                                        <th>Importe convertido</th>
+                                        <th>Forma de pago</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="pay in info.pays | orderBy: 'date' : 'inverse'">
+                                        <td>{{ pay.date | date: 'd/MM/yyyy'}}</td>
+                                        <td>{{ pay.currency | currencyFilter}}</td>
+                                        <td>{{ pay.importe}}</td>
+                                        <td>{{ pay.importeConvertido}}</td>
+                                        <td>{{ pay.payMethod}}</td>
+
+                                        <td>
+                                            <!-- <a class="btn btn-link" ng-href="#/{{module}}/{{pay._id}}/view" uib-tooltip="Ver" tooltip-placement="top"><i class="fa fa-eye"></i> </a>
+                                            <a class="btn btn-link" ng-href="#/{{module}}/{{pay._id}}/edit" uib-tooltip="Editar" tooltip-placement="top"><i class="fa fa-pencil"></i> </a> -->
+                                            <button class="btn btn-link" ng-click="deletePay(pay._id);" uib-tooltip="Borrar" tooltip-placement="top"><i class="fa fa-trash"></i> </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- TODO: sacar styles -->
+                            <div class="text-center" style="clear:both;">
+                                <button class="btn btn-success" ng-click="newNote();" ng-disabled="!!btnNote"
+                                        style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;">
+                                    Agregar nota
+                                </button>
+                                <a class="btn btn-primary" style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;"
+                                   ng-href="#/pays/new/{{info._id}}/sale">Agregar pago</a>
+                                   <!-- <a class="btn btn-success" style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;"
+                                      ng-href="#/pays/{{info._id}}">Ver pagos</a> -->
+                                <a class="btn btn-primary" style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;"
+                                   ng-href="#/{{module}}/{{info._id}}/edit">Editar</a>
+                                <button class="btn btn-danger" ng-click="delete(info._id);"
+                                        style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;">
+                                    Eliminar
+                                </button>
+                                <a class="btn btn-default" style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;"
+                                   ng-href="#/{{module}}">Atrás</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-include="'views/common/footer.html'"></div>
+    </div>
+</div>

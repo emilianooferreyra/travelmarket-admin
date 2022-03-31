@@ -1,0 +1,73 @@
+<form class="form-horizontal text-center" ng-submit="save();">
+    <div style="width:90%;">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="code">Código de venta</label>
+
+            <div class="col-sm-10">
+              <selectize id="code" config='configSale' options='sales' data-model="{{info.sale}}" ng-model="info.code" required="true"></selectize>
+            </div>
+            <div class="col-sm-12">
+              {{info.code}}
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="client">Cliente</label>
+
+          <div class="col-sm-10">
+            {{info.sale.client.name}} - {{info.sale.client.cuit}}
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="package">Paquete</label>
+
+            <div class="col-sm-10">
+              {{info.sale.package.city}} - {{info.sale.package.country}} - {{info.sale.package.beach}}
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="client">Fecha de la venta</label>
+
+          <div class="col-sm-10">
+            {{info.sale.date | date: 'd/MM/yyyy'}}
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="description">Descripción</label>
+            <div class="col-sm-10">
+                {{info.sale.description}}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="currency">Moneda</label>
+            <div class="col-sm-10">
+                <select class="form-control" ng-model="info.currency" id="currency">
+                    <option value="">Seleccione una opción</option>
+                    <option value="ars">Peso argentino</option>
+                    <option value="usd">Dólar</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="total">Importe Neto</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="number" ng-model="info.total" id="total" min="0" max="99999999999" step=".01">
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="provider">Proveedor</label>
+
+          <div class="col-sm-10">
+            <selectize id="provider" config='configProvider' options='providers' data-model="{{info.provider}}" ng-model="info.provider" required="true"></selectize>
+          </div>
+        </div>
+
+        <div class="actions">
+            <a class="btn btn-default" ng-href="#/{{module}}">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+    </div>
+</form>

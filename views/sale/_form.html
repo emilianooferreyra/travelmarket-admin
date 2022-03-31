@@ -1,0 +1,103 @@
+<form class="form-horizontal text-center" ng-submit="save();">
+    <div style="width:90%;">
+        <!-- <div class="form-group">
+            <label class="col-sm-2 control-label" disabled for="code">Código*</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="info.code"
+                       id="code"/>
+            </div>
+        </div> -->
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="client">Cliente</label>
+
+          <div class="col-sm-10">
+            <selectize id="client" config='configClient' options='clients' data-model="{{info.client}}" ng-model="info.client" required="true"></selectize>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="client">Proveedor</label>
+
+          <div class="col-sm-10">
+            <selectize id="provider" config='configProvider' options='providers' data-model="{{info.provider}}" ng-model="info.provider" required="true"></selectize>
+          </div>
+        </div>
+        <!-- <div class="form-group">
+            <label class="col-sm-2 control-label" for="package">Paquete</label>
+
+            <div class="col-sm-10">
+              <selectize id="package" config='configPackage' options='packages' data-model="{{info.package}}" ng-model="info.package"></selectize>
+            </div>
+        </div> -->
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="category">Categoría</label>
+            <div class="col-sm-10">
+              <select class="form-control" ng-model="info.category" id="category" required>
+                  <option value="">Seleccione una opción</option>
+                  <option value="Aéreo Nacional">Aéreo Nacional</option>
+                  <option value="Aéreo Internacional">Aéreo Internacional</option>
+                  <option value="Terrestre Nacional">Terrestre Nacional</option>
+                  <option value="Terrestre Internacional">Terrestre Internacional</option>
+                  <option value="Hotel">Hotel</option>
+                  <option value="Gestión">Gestión</option>
+                  <option value="Paquete Caribe">Paquete Caribe</option>
+                  <option value="Paquete Brasil">Paquete Brasil</option>
+                  <option value="Paquete Nacional">Paquete Nacional</option>
+                  <option value="Paquete Europa">Paquete Europa</option>
+                  <option value="Seguro Médico">Seguro Médico</option>
+              </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="date">Fecha de venta*</label>
+            <div class="col-sm-10">
+                <input class="form-control" ng-model="info.date" placeholder="DD-MM-AAAA" id="date">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="description">Descripción</label>
+            <div class="col-sm-10">
+                <textarea rows="6" cols="80" class="form-control" ng-model="info.description" id="description"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="currency">Moneda</label>
+
+            <div class="col-sm-10">
+                <select class="form-control" ng-model="info.currency" id="currency">
+                    <option value="">Seleccione una opción</option>
+                    <option value="ars">Peso argentino</option>
+                    <option value="usd">Dólar</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="impNeto">Importe Neto</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="number" ng-model="info.impNeto" id="impNeto" min="0" max="99999999999" step=".01">
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="tx">TX</label>
+
+          <div class="col-sm-10">
+            <input class="form-control" type="number" ng-model="info.tx"  min="0" max="99999999999" step=".01"
+            id="tx"/>
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="impTm">Importe TM</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" type="number" ng-model="info.impTm" min="0" max="99999999999" step=".01"
+                       id="impTm"/>
+            </div>
+        </div>
+        <div class="actions">
+            <a class="btn btn-default" ng-href="#/{{module}}">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+    </div>
+</form>

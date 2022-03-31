@@ -1,0 +1,45 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul side-navigation class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="profile-element" uib-dropdown>
+                    <a ng-href="#/">
+                        <span class="clear">
+                            <img ng-src="img/favicon.png" alt="Git in Travel Market" class="img-responsive img-circle center-block">
+                            <span class="block m-t-xs text-center">
+                                <strong class="font-bold">Get in Travel Market</strong>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+                <div class="logo-element">
+                    GiTM
+                </div>
+
+            </li>
+
+            <li ng-class="{active: isActive('/')}">
+                <a ng-href="#/"><i class="fa fa-home"></i> <span class="nav-label">Inicio</span> </a>
+            </li>
+            <li ng-class="{active: isActive('/packages/new') || isActive('/packages/:id/view') || isActive('/packages') || isActiveEdit('packages')}">
+                <a ng-href="#/packages"><i class="fa fa-suitcase"></i> <span class="nav-label">Paquetes</span></a>
+            </li>
+            <li ng-class="{active: isActive('/posts/new') || isActive('/posts/:id/view') || isActive('/posts') || isActiveEdit('posts')}">
+                <a ng-href="#/posts"><i class="fa fa-desktop"></i> <span class="nav-label">Posts</span></a>
+            </li>
+            <li ng-class="{active: isActive('/clients/new') || isActive('/clients/:id/view') || isActive('/clients') || isActiveEdit('clients')}">
+                <a ng-href="#/clients"><i class="fa fa-user"></i> <span class="nav-label">Clientes</span></a>
+            </li>
+            <li ng-class="{active: isActive('/providers/new') || isActive('/providers/:id/view') || isActive('/providers') || isActiveEdit('providers')}">
+                <a ng-href="#/providers"><i class="fa fa-users"></i> <span class="nav-label">Proveedores</span></a>
+            </li>
+            <li ng-class="{active: isActive('/sales/new') || isActive('/sales/:id/view') || isActive('/sales') || isActiveEdit('sales')}">
+                <a ng-href="#/sales"><i class="fa fa-tags"></i> <span class="nav-label">Ventas</span></a>
+            </li>
+            <li ng-class="{active: isActive('/providerpayments/new') || isActive('/providerpayments/:id/view') || isActive('/providerpayments') || isActiveEdit('providerpayments')}">
+                <a ng-href="#/providerpayments"><i class="fa fa-tags"></i> <span class="nav-label">Pagos a proveedores</span></a>
+            </li>
+        </ul>
+
+    </div>
+</nav>

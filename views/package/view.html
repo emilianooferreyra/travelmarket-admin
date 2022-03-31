@@ -1,0 +1,243 @@
+<div id="wrapper">
+    <div ng-include="'views/common/navigation.html'"></div>
+    <div id="page-wrapper" class="gray-bg">
+        <div ng-include="'views/common/topnavbar.html'"></div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            <h5>{{info.name}}</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <table style="width:70%;">
+                                <tr ng-if="!!info.front">
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Imágen de Portada</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <img style="width: 160px;margin-left: 1em;" ng-src="api/{{info.front.source}}" alt="Imágen de portada">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Ciudad</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.city}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>País</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.country}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Playa</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.beach}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Fecha de partida</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.when | date: 'd/MM/yyyy':'UTC'}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Cantidad de días</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.days}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Cantidad de noches</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.nights}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Destacado</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.starred ? 'Si' : 'No'}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Incluye aéreos</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.aerial ? 'Si' : 'No'}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Incluye traslado</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.transfer ? 'Si' : 'No'}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Incluye excursiones</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.excursion ? 'Si' : 'No'}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Incluye hospedaje</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.accommodations ? 'Si' : 'No'}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Nombre del hotel</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.hotelName }}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Mínimo de edad</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.minorsAge}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Tipo de comida</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.foodRegime | foodFilter}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Cantidad de pasajeros</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.passengers}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Moneda</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.currency | currencyFilter}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Precio</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{info.currency | currencySymbolFilter}}{{ info.price}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="text-right">
+                                            <strong><small>Descripción</small></strong>
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <h2 class="text-left" style="margin-left:1em;">{{ info.description}}
+                                        </h2>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- TODO: sacar styles -->
+                            <div class="text-center" style="clear:both;">
+                                <a class="btn btn-primary" style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;"
+                                   ng-href="#/{{module}}/{{info._id}}/edit">Editar</a>
+                                <button class="btn btn-danger" ng-click="delete(info._id);"
+                                        style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;">
+                                    Eliminar
+                                </button>
+                                <a class="btn btn-default" style="margin-top:2em;margin-bottom:0.2em;margin-left:1em;margin-right:1em;"
+                                   ng-href="#/{{module}}">Atrás</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-include="'views/common/footer.html'"></div>
+    </div>
+</div>

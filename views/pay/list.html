@@ -1,0 +1,53 @@
+<div id="wrapper">
+    <div ng-include="'views/common/navigation.html'"></div>
+    <div id="page-wrapper" class="gray-bg">
+        <div ng-include="'views/common/topnavbar.html'"></div>
+
+        <!-- <search-bar ng-if="!!filtersView" data-filters="{{filtersView}}" data-paginate="{{paginate}}"></search-bar> -->
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <a ng-href="#/{{module}}/new/{{sale}}" class='btn btn-primary' style='margin:1em;float:right;'>Nuevo pago</a>
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <table class="table table-bordered table-hover dataTable" id='clients-table'>
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Moneda</th>
+                                        <th>Importe</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="info in data">
+                                        <td>{{ info.date | date: 'd/MM/yyyy'}}</td>
+                                        <td>{{ info.import}}</td>
+                                        <td>{{ info.currency | currencyFilter}}</td>
+                                        <td>
+                                            <a class="btn btn-link" ng-href="#/{{module}}/{{info._id}}/view" uib-tooltip="Ver" tooltip-placement="top"><i class="fa fa-eye"></i> </a>
+                                            <a class="btn btn-link" ng-href="#/{{module}}/{{info._id}}/edit" uib-tooltip="Editar" tooltip-placement="top"><i class="fa fa-pencil"></i> </a>
+                                            <button class="btn btn-link" ng-click="delete(info._id);" uib-tooltip="Borrar" tooltip-placement="top"><i class="fa fa-trash"></i> </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <paging page="paginate.page" page-size="paginate.limit"
+                            total="paginate.countTotal"
+                            paging-action="paging('pageClick', page, pageSize, total)"
+                            hide-if-empty="true" show-prev-next="true" show-first-last="true"
+                            text-title-page="Página {page}"
+                            text-title-first="Primera página"
+                            text-title-last="Última página"
+                            text-title-next="Siguiente"
+                            text-title-prev="Anterior"></paging>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-include="'views/common/footer.html'"></div>
+    </div>
+</div>

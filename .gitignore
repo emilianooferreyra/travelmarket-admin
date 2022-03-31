@@ -1,0 +1,10 @@
+# Bower Components
+/bower_components/
+
+# Node Modules
+/node_modules/
+
+# Netbeans
+/nbproject/
+
+.DS_Store
