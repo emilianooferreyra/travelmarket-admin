@@ -341,7 +341,7 @@ angular
     $rootScope.logged = sessionStorage.getItem("logged") || false;
     $rootScope.adminglob = $cookieStore.get("adminglob") || {};
 
-    $rootScope.url = "https://travelmarket-admin-2.onrender.com/api";
+    $rootScope.url = "https://travelmarket-admin.onrender.com/api";
     authManager.redirectWhenUnauthenticated();
 
     $rootScope.logout = function () {
